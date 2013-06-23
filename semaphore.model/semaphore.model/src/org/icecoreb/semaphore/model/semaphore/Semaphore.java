@@ -4,13 +4,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.icecoreb.semaphore.model.light.Light;
+import org.icecoreb.semaphore.model.light.SwitchState;
 
 public class Semaphore {
 	private Light redLight;
 	private Light yellowLight;
 	private Light greenLight;
 	private List<Light> lights;
-	private SemaphoreState state;
+	private SemaphoreState semaphoreState;
 
 	public Semaphore() {
 		this.redLight = new Light(SemaphoreColor.redOn, SemaphoreColor.redOff);
@@ -20,18 +21,26 @@ public class Semaphore {
 				SemaphoreColor.greenOff);
 		this.lights = Arrays.asList(this.redLight, this.yellowLight,
 				this.greenLight);
-		this.state = SemaphoreState.getStateOff();
-		this.state.setState(this);
+		this.semaphoreState = SemaphoreState.getStateOff();
+		this.semaphoreState.setState(this);
 	}
 
 	public void turnOn() {
-		this.state = SemaphoreState.getStateOn();
-		this.state.setState(this);
+		this.semaphoreState = SemaphoreState.getStateOn();
+		this.semaphoreState.setState(this);
 	}
 
 	public void turnOff() {
-		this.state = SemaphoreState.getStateOff();
-		this.state.setState(this);
+		this.semaphoreState = SemaphoreState.getStateOff();
+		this.semaphoreState.setState(this);
+	}
+	
+	public SwitchState getState() {
+		return this.semaphoreState.getState();
+	}
+
+	public void switchLight() {
+		this.semaphoreState.switchLight(this);
 	}
 
 	public List<Light> getLights() {
@@ -62,12 +71,8 @@ public class Semaphore {
 		this.greenLight = greenLight;
 	}
 
-	public SemaphoreState getState() {
-		return state;
-	}
-
-	public void setState(SemaphoreState state) {
-		this.state = state;
+	public void setSemaphoreState(SemaphoreState state) {
+		this.semaphoreState = state;
 	}
 
 	@Override
@@ -78,7 +83,7 @@ public class Semaphore {
 				+ ((greenLight == null) ? 0 : greenLight.hashCode());
 		result = prime * result
 				+ ((redLight == null) ? 0 : redLight.hashCode());
-		result = prime * result + ((state == null) ? 0 : state.hashCode());
+		result = prime * result + ((semaphoreState == null) ? 0 : semaphoreState.hashCode());
 		result = prime * result
 				+ ((yellowLight == null) ? 0 : yellowLight.hashCode());
 		return result;
@@ -103,10 +108,10 @@ public class Semaphore {
 				return false;
 		} else if (!redLight.equals(other.redLight))
 			return false;
-		if (state == null) {
-			if (other.state != null)
+		if (semaphoreState == null) {
+			if (other.semaphoreState != null)
 				return false;
-		} else if (!state.equals(other.state))
+		} else if (!semaphoreState.equals(other.semaphoreState))
 			return false;
 		if (yellowLight == null) {
 			if (other.yellowLight != null)

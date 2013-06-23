@@ -31,6 +31,10 @@ public class Light {
 		this.state = this.state.switchState();
 	}
 
+	public SwitchState getState() {
+		return this.state;
+	}
+
 	public SemaphoreColor getColor() {
 		if (SwitchState.on.equals(this.state)) {
 			return this.colorOn;

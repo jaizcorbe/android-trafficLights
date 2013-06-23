@@ -8,7 +8,7 @@ public abstract class SemaphoreState {
 
 	public abstract SwitchState getState();
 
-	public abstract void switchLight();
+	public abstract void switchLight(Semaphore semaphore);
 
 	public static SemaphoreState getStateOn() {
 		return new SemaphoreStateOn();

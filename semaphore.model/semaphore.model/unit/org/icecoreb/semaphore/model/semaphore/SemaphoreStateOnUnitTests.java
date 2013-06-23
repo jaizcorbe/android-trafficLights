@@ -25,7 +25,7 @@ public class SemaphoreStateOnUnitTests {
 		expectedSemaphore.getRedLight().turnOn();
 		expectedSemaphore.getYellowLight().turnOff();
 		expectedSemaphore.getGreenLight().turnOff();
-		expectedSemaphore.setState(new SemaphoreStateOn());
+		expectedSemaphore.setSemaphoreState(new SemaphoreStateOn());
 
 		onState.setState(semaphore);
 		assertEquals("wrong semaphore", expectedSemaphore, semaphore);
@@ -43,7 +43,7 @@ public class SemaphoreStateOnUnitTests {
 		expectedSemaphore.getRedLight().turnOn();
 		expectedSemaphore.getYellowLight().turnOff();
 		expectedSemaphore.getGreenLight().turnOff();
-		expectedSemaphore.setState(new SemaphoreStateOn());
+		expectedSemaphore.setSemaphoreState(new SemaphoreStateOn());
 
 		onState.setState(semaphore);
 		assertEquals("wrong semaphore", expectedSemaphore, semaphore);
