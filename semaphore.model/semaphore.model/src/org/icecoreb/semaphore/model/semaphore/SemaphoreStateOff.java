@@ -6,8 +6,8 @@ public class SemaphoreStateOff extends SemaphoreState {
 
 	@Override
 	public void setState(Semaphore semaphore) {
-		// TODO Auto-generated method stub
-
+		semaphore.setState(this);
+		this.turnAllLightsOff(semaphore);
 	}
 
 	@Override
@@ -18,6 +18,12 @@ public class SemaphoreStateOff extends SemaphoreState {
 	@Override
 	public int hashCode() {
 		return this.getClass().hashCode();
+	}
+
+	@Override
+	public void switchLight() {
+		// TODO Auto-generated method stub
+
 	}
 
 }

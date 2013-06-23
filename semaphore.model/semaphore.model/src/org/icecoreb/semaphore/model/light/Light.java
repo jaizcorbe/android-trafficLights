@@ -66,4 +66,10 @@ public class Light {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Light state: [" + this.state + "] colorOn: [" + this.colorOn
+				+ "] colorOff: [" + this.colorOff + "]";
+	}
 }
