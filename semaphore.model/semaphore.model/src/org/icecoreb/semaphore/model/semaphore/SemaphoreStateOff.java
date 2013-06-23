@@ -16,11 +16,6 @@ public class SemaphoreStateOff extends SemaphoreState {
 	}
 
 	@Override
-	public int hashCode() {
-		return this.getClass().hashCode();
-	}
-
-	@Override
 	public void switchLight(Semaphore semaphore) {
 		// TODO Auto-generated method stub
 

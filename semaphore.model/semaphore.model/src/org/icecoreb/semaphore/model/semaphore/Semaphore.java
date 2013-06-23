@@ -26,15 +26,13 @@ public class Semaphore {
 	}
 
 	public void turnOn() {
-		this.semaphoreState = SemaphoreState.getStateOn();
-		this.semaphoreState.setState(this);
+		SemaphoreState.getStateOn().setState(this);
 	}
 
 	public void turnOff() {
-		this.semaphoreState = SemaphoreState.getStateOff();
-		this.semaphoreState.setState(this);
+		SemaphoreState.getStateOff().setState(this);
 	}
-	
+
 	public SwitchState getState() {
 		return this.semaphoreState.getState();
 	}
@@ -83,7 +81,8 @@ public class Semaphore {
 				+ ((greenLight == null) ? 0 : greenLight.hashCode());
 		result = prime * result
 				+ ((redLight == null) ? 0 : redLight.hashCode());
-		result = prime * result + ((semaphoreState == null) ? 0 : semaphoreState.hashCode());
+		result = prime * result
+				+ ((semaphoreState == null) ? 0 : semaphoreState.hashCode());
 		result = prime * result
 				+ ((yellowLight == null) ? 0 : yellowLight.hashCode());
 		return result;
