@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.icecoreb.semaphore.model.light.SwitchState;
 import org.junit.Test;
 
-public class SemaphoreStateOnUnitTests {
+public class SemaphoreStateOnUnitTest {
 
 	@Test
 	public void testCreate() {

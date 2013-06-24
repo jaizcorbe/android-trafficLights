@@ -6,7 +6,7 @@ import static org.hamcrest.CoreMatchers.*;
 import org.icecoreb.semaphore.model.light.SwitchState;
 import org.junit.Test;
 
-public class SemaphoreStateUnitTests {
+public class SemaphoreStateUnitTest {
 
 	@Test
 	public void testGetStateOn() {

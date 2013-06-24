@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class SwitchStateUnitTests {
+public class SwitchStateUnitTest {
 
 	@Test
 	public void testSwitchOn() {

@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.icecoreb.semaphore.model.semaphore.SemaphoreColor;
 import org.junit.Test;
 
-public class LightUnitTests {
+public class LightUnitTest {
 
 	@Test
 	public void testGetColor_OnState() {
