@@ -5,6 +5,7 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry kind="lib" path="libs/semaphore.model-0.0.1-SNAPSHOT.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK/semaphore.model"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/jaizcorbe/git/android/semaphore/semaphore.model/semaphore.model/target/semaphore.model-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

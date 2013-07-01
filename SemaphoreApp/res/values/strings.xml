@@ -4,5 +4,7 @@
     <string name="app_name">Semaphore</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="switch_button">Switch</string>
+    <string name="onOff_button">ON/OFF</string>
 
 </resources>
