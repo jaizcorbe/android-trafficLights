@@ -11,6 +11,8 @@ import android.view.View;
 
 public class SemaphoreActivity extends Activity {
 
+	private static final String SEMAPHORE_STATE = "SEMAPHORE_STATE";
+
 	private Semaphore semaphore;
 
 	@Override
@@ -29,6 +31,21 @@ public class SemaphoreActivity extends Activity {
 		return true;
 	}
 
+	@Override
+	public void onSaveInstanceState(Bundle savedInstanceState) {
+		SemaphoreStateMapper.saveSemaphoreState(this.semaphore,
+				savedInstanceState);
+		super.onSaveInstanceState(savedInstanceState);
+	}
+
+	@Override
+	public void onRestoreInstanceState(Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
+		SemaphoreStateMapper.restoreSemaphoreState(savedInstanceState,
+				this.semaphore);
+		this.setViewColors();
+	}
+
 	/** Called when the user clicks the Send button */
 	public void switchOnOff(View view) {
 		if (this.semaphore.getState() == SwitchState.on) {
@@ -38,7 +55,7 @@ public class SemaphoreActivity extends Activity {
 		}
 		this.setViewColors();
 	}
-	
+
 	public void switchLight(View view) {
 		this.semaphore.switchLight();
 		this.setViewColors();
