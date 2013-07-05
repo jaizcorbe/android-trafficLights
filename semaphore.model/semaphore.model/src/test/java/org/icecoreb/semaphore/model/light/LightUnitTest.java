@@ -67,7 +67,7 @@ public class LightUnitTest {
 				SemaphoreColor.greenOff, SwitchState.on);
 		Light expectedLight = new Light(SemaphoreColor.greenOn,
 				SemaphoreColor.greenOff, SwitchState.off);
-		light.switchLight();
+		light.switchState();
 		assertEquals("Wrong light", expectedLight, light);
 	}
 
@@ -77,7 +77,27 @@ public class LightUnitTest {
 				SemaphoreColor.greenOff, SwitchState.off);
 		Light expectedLight = new Light(SemaphoreColor.greenOn,
 				SemaphoreColor.greenOff, SwitchState.on);
-		light.switchLight();
+		light.switchState();
+		assertEquals("Wrong light", expectedLight, light);
+	}
+
+	@Test
+	public void testSetState_On() {
+		Light light = new Light(SemaphoreColor.greenOn,
+				SemaphoreColor.greenOff, SwitchState.off);
+		Light expectedLight = new Light(SemaphoreColor.greenOn,
+				SemaphoreColor.greenOff, SwitchState.on);
+		light.setState(SwitchState.on);
+		assertEquals("Wrong light", expectedLight, light);
+	}
+
+	@Test
+	public void testSetState_Off() {
+		Light light = new Light(SemaphoreColor.greenOn,
+				SemaphoreColor.greenOff, SwitchState.on);
+		Light expectedLight = new Light(SemaphoreColor.greenOn,
+				SemaphoreColor.greenOff, SwitchState.off);
+		light.setState(SwitchState.off);
 		assertEquals("Wrong light", expectedLight, light);
 	}
 

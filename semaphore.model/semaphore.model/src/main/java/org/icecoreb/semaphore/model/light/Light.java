@@ -1,8 +1,9 @@
 package org.icecoreb.semaphore.model.light;
 
+import org.icecoreb.semaphore.model.SwitchableDevice;
 import org.icecoreb.semaphore.model.semaphore.SemaphoreColor;
 
-public class Light {
+public class Light implements SwitchableDevice {
 
 	private SemaphoreColor colorOn;
 	private SemaphoreColor colorOff;
@@ -27,12 +28,16 @@ public class Light {
 		this.state = SwitchState.off;
 	}
 
-	public void switchLight() {
+	public void switchState() {
 		this.state = this.state.switchState();
 	}
 
 	public SwitchState getState() {
 		return this.state;
+	}
+
+	public void setState(SwitchState state) {
+		this.state = state;
 	}
 
 	public SemaphoreColor getColor() {

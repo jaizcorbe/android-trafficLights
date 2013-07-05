@@ -1,17 +1,14 @@
 package org.icecoreb.semaphore;
 
 import org.icecoreb.semaphore.model.light.Light;
-import org.icecoreb.semaphore.model.light.SwitchState;
 import org.icecoreb.semaphore.model.semaphore.Semaphore;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
 public class SemaphoreActivity extends Activity {
-
-	private static final String SEMAPHORE_STATE = "SEMAPHORE_STATE";
 
 	private Semaphore semaphore;
 
@@ -48,11 +45,7 @@ public class SemaphoreActivity extends Activity {
 
 	/** Called when the user clicks the Send button */
 	public void switchOnOff(View view) {
-		if (this.semaphore.getState() == SwitchState.on) {
-			this.semaphore.turnOff();
-		} else {
-			this.semaphore.turnOn();
-		}
+		this.semaphore.switchState();
 		this.setViewColors();
 	}
 

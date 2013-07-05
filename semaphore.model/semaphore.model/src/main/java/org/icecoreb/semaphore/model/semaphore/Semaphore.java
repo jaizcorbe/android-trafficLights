@@ -3,10 +3,11 @@ package org.icecoreb.semaphore.model.semaphore;
 import java.util.Arrays;
 import java.util.List;
 
+import org.icecoreb.semaphore.model.SwitchableDevice;
 import org.icecoreb.semaphore.model.light.Light;
 import org.icecoreb.semaphore.model.light.SwitchState;
 
-public class Semaphore {
+public class Semaphore implements SwitchableDevice {
 	private Light redLight;
 	private Light yellowLight;
 	private Light greenLight;
@@ -26,11 +27,20 @@ public class Semaphore {
 	}
 
 	public void turnOn() {
-		SemaphoreState.getStateOn().setState(this);
+		this.setState(SwitchState.on);
 	}
 
 	public void turnOff() {
-		SemaphoreState.getStateOff().setState(this);
+		this.setState(SwitchState.off);
+	}
+
+	public void setState(SwitchState state) {
+		SemaphoreState semaphoreState = SemaphoreState.getState(state);
+		semaphoreState.setState(this);
+	}
+
+	public void switchState() {
+		this.setState(this.getState().switchState());
 	}
 
 	public SwitchState getState() {

@@ -21,6 +21,18 @@ public class SemaphoreStateUnitTest {
 	}
 
 	@Test
+	public void testGetState_On() {
+		SemaphoreState state = SemaphoreState.getState(SwitchState.on);
+		assertEquals("Wrong semaphore state", SwitchState.on, state.getState());
+	}
+
+	@Test
+	public void testGetState_Off() {
+		SemaphoreState state = SemaphoreState.getState(SwitchState.off);
+		assertEquals("Wrong semaphore state", SwitchState.off, state.getState());
+	}
+
+	@Test
 	public void testEquals() {
 		assertEquals("Wrong state", SemaphoreState.getStateOff(),
 				SemaphoreState.getStateOff());

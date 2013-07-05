@@ -8,6 +8,82 @@ import org.junit.Test;
 public class SemaphoreUnitTest {
 
 	@Test
+	public void testSetStateOn_AllValuesOn() {
+		Semaphore semaphore = new Semaphore();
+		semaphore.getRedLight().turnOn();
+		semaphore.getYellowLight().turnOn();
+		semaphore.getGreenLight().turnOn();
+
+		Semaphore expectedSemaphore = new Semaphore();
+		expectedSemaphore.getRedLight().turnOn();
+		expectedSemaphore.getYellowLight().turnOff();
+		expectedSemaphore.getGreenLight().turnOff();
+		expectedSemaphore.setSemaphoreState(new SemaphoreStateOn());
+
+		semaphore.setState(SwitchState.on);
+		assertEquals("wrong semaphore", expectedSemaphore, semaphore);
+		assertEquals("wrong semaphore state", SwitchState.on,
+				semaphore.getState());
+	}
+
+	@Test
+	public void testSetStateOn_AllValuesOff() {
+		Semaphore semaphore = new Semaphore();
+		semaphore.getRedLight().turnOff();
+		semaphore.getYellowLight().turnOff();
+		semaphore.getGreenLight().turnOff();
+
+		Semaphore expectedSemaphore = new Semaphore();
+		expectedSemaphore.getRedLight().turnOn();
+		expectedSemaphore.getYellowLight().turnOff();
+		expectedSemaphore.getGreenLight().turnOff();
+		expectedSemaphore.setSemaphoreState(new SemaphoreStateOn());
+
+		semaphore.setState(SwitchState.on);
+		assertEquals("wrong semaphore", expectedSemaphore, semaphore);
+		assertEquals("wrong semaphore state", SwitchState.on,
+				semaphore.getState());
+	}
+
+	@Test
+	public void testSetStateOff_AllValuesOn() {
+		Semaphore semaphore = new Semaphore();
+		semaphore.getRedLight().turnOn();
+		semaphore.getYellowLight().turnOn();
+		semaphore.getGreenLight().turnOn();
+
+		Semaphore expectedSemaphore = new Semaphore();
+		expectedSemaphore.getRedLight().turnOff();
+		expectedSemaphore.getYellowLight().turnOff();
+		expectedSemaphore.getGreenLight().turnOff();
+		expectedSemaphore.setSemaphoreState(new SemaphoreStateOff());
+
+		semaphore.setState(SwitchState.off);
+		assertEquals("wrong semaphore", expectedSemaphore, semaphore);
+		assertEquals("wrong semaphore state", SwitchState.off,
+				semaphore.getState());
+	}
+
+	@Test
+	public void testSetStateOff_AllValuesOff() {
+		Semaphore semaphore = new Semaphore();
+		semaphore.getRedLight().turnOff();
+		semaphore.getYellowLight().turnOff();
+		semaphore.getGreenLight().turnOff();
+
+		Semaphore expectedSemaphore = new Semaphore();
+		expectedSemaphore.getRedLight().turnOff();
+		expectedSemaphore.getYellowLight().turnOff();
+		expectedSemaphore.getGreenLight().turnOff();
+		expectedSemaphore.setSemaphoreState(new SemaphoreStateOff());
+
+		semaphore.setState(SwitchState.off);
+		assertEquals("wrong semaphore", expectedSemaphore, semaphore);
+		assertEquals("wrong semaphore state", SwitchState.off,
+				semaphore.getState());
+	}
+
+	@Test
 	public void testTurnOn_AllValuesOn() {
 		Semaphore semaphore = new Semaphore();
 		semaphore.getRedLight().turnOn();
