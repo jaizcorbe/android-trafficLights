@@ -1,24 +1,38 @@
 package org.icecoreb.semaphore;
 
-import org.icecoreb.semaphore.model.light.Light;
+import org.icecoreb.semaphore.controls.ControlsFragment.TrafficLightsListener;
+import org.icecoreb.semaphore.lights.ColorLightsFragment;
 import org.icecoreb.semaphore.model.semaphore.Semaphore;
 
-import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.View;
 
-public class SemaphoreActivity extends Activity {
+public class SemaphoreActivity extends FragmentActivity implements
+		TrafficLightsListener {
 
 	private Semaphore semaphore;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_semaphore);
+		this.setOrientationLayout();
 		this.semaphore = new Semaphore();
 		this.semaphore.turnOff();
 		this.setViewColors();
+	}
+
+	protected void setOrientationLayout() {
+		int orientation = getResources().getConfiguration().orientation;
+		if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+			setContentView(R.layout.activity_semaphore);
+		} else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+			setContentView(R.layout.activity_semaphore_landscape);
+		} else {
+			setContentView(R.layout.activity_semaphore);
+		}
 	}
 
 	@Override
@@ -43,8 +57,7 @@ public class SemaphoreActivity extends Activity {
 		this.setViewColors();
 	}
 
-	/** Called when the user clicks the Send button */
-	public void switchOnOff(View view) {
+	public void turnOnOff(View view) {
 		this.semaphore.switchState();
 		this.setViewColors();
 	}
@@ -55,20 +68,12 @@ public class SemaphoreActivity extends Activity {
 	}
 
 	private void setViewColors() {
-		View redLight = findViewById(R.id.red_light);
-		View yellowLight = findViewById(R.id.yellow_light);
-		View greenLight = findViewById(R.id.green_light);
-		this.setLight(redLight, semaphore.getRedLight());
-		this.setLight(yellowLight, semaphore.getYellowLight());
-		this.setLight(greenLight, semaphore.getGreenLight());
+		this.getTrafficLights().setViewColors(this.semaphore);
 	}
 
-	private void setLight(View view, Light light) {
-		if (view != null && light != null) {
-			view.setBackgroundColor(ColorMapper.getColorCode(light.getColor(),
-					this.getResources()));
-			view.refreshDrawableState();
-		}
+	private ColorLightsFragment getTrafficLights() {
+		return (ColorLightsFragment) getSupportFragmentManager()
+				.findFragmentById(R.id.color_lights_fragment);
 	}
 
 }
