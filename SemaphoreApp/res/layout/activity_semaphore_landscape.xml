@@ -23,6 +23,6 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        tools:layout="@layout/controls" />
+        tools:layout="@layout/controls_landscape" />
 
 </LinearLayout>

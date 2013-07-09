@@ -1,6 +1,7 @@
 package org.icecoreb.semaphore.lights;
 
 import org.icecoreb.semaphore.ColorMapper;
+import org.icecoreb.semaphore.LayoutSelector;
 import org.icecoreb.semaphore.R;
 import org.icecoreb.semaphore.model.light.Light;
 import org.icecoreb.semaphore.model.semaphore.Semaphore;
@@ -16,9 +17,11 @@ public class ColorLightsFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		return inflater.inflate(R.layout.color_lights, container, false);
+		int layout = LayoutSelector.getLayout(R.layout.color_lights,
+				R.layout.color_lights_landscape, this.getActivity());
+		return inflater.inflate(layout, container, false);
 	}
-	
+
 	public void setViewColors(Semaphore semaphore) {
 		View redLight = getView().findViewById(R.id.red_light);
 		View yellowLight = getView().findViewById(R.id.yellow_light);
@@ -27,8 +30,7 @@ public class ColorLightsFragment extends Fragment {
 		this.setLight(yellowLight, semaphore.getYellowLight());
 		this.setLight(greenLight, semaphore.getGreenLight());
 	}
-    
-    
+
 	private void setLight(View view, Light light) {
 		if (view != null && light != null) {
 			view.setBackgroundColor(ColorMapper.getColorCode(light.getColor(),

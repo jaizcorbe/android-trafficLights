@@ -7,6 +7,5 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK/semaphore.model"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/jaizcorbe/git/android/semaphore/semaphore.model/semaphore.model/target/semaphore.model-0.0.1-SNAPSHOT.jar" sourcepath="/semaphore.model"/>
-	<classpathentry exported="true" kind="lib" path="libs/android-support-v4.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

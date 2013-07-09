@@ -25,14 +25,9 @@ public class SemaphoreActivity extends FragmentActivity implements
 	}
 
 	protected void setOrientationLayout() {
-		int orientation = getResources().getConfiguration().orientation;
-		if (orientation == Configuration.ORIENTATION_PORTRAIT) {
-			setContentView(R.layout.activity_semaphore);
-		} else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-			setContentView(R.layout.activity_semaphore_landscape);
-		} else {
-			setContentView(R.layout.activity_semaphore);
-		}
+		int layout = LayoutSelector.getLayout(R.layout.activity_semaphore,
+				R.layout.activity_semaphore_landscape, this);
+		setContentView(layout);
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package org.icecoreb.semaphore.controls;
 
+import org.icecoreb.semaphore.LayoutSelector;
 import org.icecoreb.semaphore.R;
 
 import android.app.Activity;
@@ -22,7 +23,11 @@ public class ControlsFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		return inflater.inflate(R.layout.controls, container, false);
+
+		int layout = LayoutSelector.getLayout(R.layout.controls,
+				R.layout.controls_landscape, this.getActivity());
+
+		return inflater.inflate(layout, container, false);
 	}
 
 	@Override
